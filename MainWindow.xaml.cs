@@ -51,10 +51,16 @@ namespace WpfApp1
         {
             OsztalyokBetoltese(fajlNev);
         }
-
         private void btnRogzit_Click(object sender, RoutedEventArgs e)
         {
-            
+            StreamWriter sr = new StreamWriter("naplo.csv",append:true, encoding:Encoding.UTF8);
+
+            if (txtNev.Text=="" || dpDate.Text=="")
+                MessageBox.Show("Nem irtal be Nevet/datumot");
+            else
+                sr.WriteLine($"{txtNev.Text};{cbTargy.Text};{dpDate.Text};{sliJegy.Value}");
+
+            sr.Close();
         }
     }
 }
