@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,8 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using WpfApp1;
 
-namespace WpfApp1
+namespace WpfApp4
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -53,12 +54,13 @@ namespace WpfApp1
         }
         private void btnRogzit_Click(object sender, RoutedEventArgs e)
         {
-            StreamWriter sr = new StreamWriter("naplo.csv",append:true, encoding:Encoding.UTF8);
+            StreamWriter sr = new StreamWriter("naplo.csv", append: true, encoding: Encoding.UTF8);
 
-            if (txtNev.Text=="" || dpDate.Text=="")
-                MessageBox.Show("Nem irtal be Nevet/datumot");
+            if (txtNev.Text == "" || dpDatum.Text == "")
+                MessageBox.Show("nem adtál meg minden adatot");
             else
-                sr.WriteLine($"{txtNev.Text};{cbTargy.Text};{dpDate.Text};{sliJegy.Value}");
+                sr.WriteLine($"{txtNev.Text};{cboTantargy.Text};{dpDatum.Text};{sliJegy.Value}");
+                MessageBox.Show("sikeres írás");
 
             sr.Close();
         }
